@@ -1,0 +1,222 @@
+/* =================== Shared Authentication CSS =================== */
+:root {
+    --bg-dark: #1a2233;         
+    --bg-deep: #111827;         
+    --bg-card: #1c2536;         
+    --primary-blue: #3b82f6;   
+    --text-white: #ffffff;
+    --text-muted: #94a3b8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.vault-header {
+    height: 70px;
+    background-color: var(--bg-deep);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+ .header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+/* Logo Image Styling - Naya add kiya gaya */
+.header-logo-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.logo-text { font-size: 20px; font-weight: 600; }
+.logo-text span { color: var(--primary-blue); }
+
+/* Common Button Style for Top Nav */
+.btn-register-top, .btn-login-top, .btn-top-nav {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid var(--primary-blue);
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn-register-top:hover, .btn-login-top:hover, .btn-top-nav:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Auth Pages Specific Layouts */
+.login-wrapper, .register-wrapper, .forgot-wrapper, .reset-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.login-card, .register-card, .forgot-card, .reset-card {
+    background-color: var(--bg-card);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+h2 { font-size: 24px; font-weight: 600; margin-bottom: 8px; text-align: center; }
+p.intro { color: var(--text-muted); text-align: center; font-size: 14px; margin-bottom: 30px; }
+
+/* Form Controls */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--bg-deep);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+.form-group input:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+
+/* Buttons */
+.btn-login, .btn-register, .btn-send, .btn-reset {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-login:hover, .btn-register:hover, .btn-send:hover, .btn-reset:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* Links */
+.login-links, .links { margin-top: 25px; text-align: center; font-size: 13px; color: var(--text-muted); }
+.login-links a, .links a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+
+.vault-footer {
+    background-color: var(--bg-deep);
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* =================== ONLY RESPONSIVE FIXES =================== */
+
+@media (max-width: 768px) {
+    /* 1. Header ko pichakne se rokne ke liye */
+    .vault-header {
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+
+    .logo-text {
+        font-size: 16px; /* Choti screen par text thoda chota */
+    }
+
+    /* 2. Buttons ko ek dusre ke upar chadne se rokna */
+    .header-right {
+        gap: 8px;
+    }
+
+    .btn-register-top, .btn-login-top, .logout-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    /* 3. Card ko mobile screen ke mutabiq set karna */
+    .login-wrapper, .register-wrapper, .forgot-wrapper, .reset-wrapper {
+        padding: 100px 15px 40px 15px; /* Side spacing taake card chipke nahi */
+    }
+
+    .login-card, .register-card, .forgot-card, .reset-card {
+        padding: 25px; /* Andar ki extra space kam ki */
+        width: 100%;
+    }
+
+    /* 4. Dashboard Sidebar Mobile Fix */
+    .sidebar {
+        transform: translateX(-100%);
+        width: 260px;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-wrapper, .vault-footer {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+}
+
+/* 5. Bohat choti screens (320px) ke liye */
+@media (max-width: 380px) {
+    .logo-text span {
+        display: none; /* Sirf 'Digital' dikhega taake Logout ki jagah bane */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Isse "Vault" text gayab nahi hoga aur sahi dikhega */
+    .logo-text {
+        display: flex !important; /* Force flex to keep Digital and Vault together */
+        gap: 4px;
+        font-size: 16px; /* Text size thoda chhota kiya taake poora fit aaye */
+        white-space: nowrap; /* Text ko line break karne se rokega */
+    }
+
+    .logo-text span {
+        display: inline !important; /* "Vault" span ko hamesha dikhao */
+        color: var(--primary-blue);
+    }
+
+    /* Agar Logout button text ke upar aa raha hai to gap adjust karein */
+    .header-left {
+        gap: 8px;
+        overflow: visible;
+    }
+}
+
+/* Bohat chhoti screens (like 320px) ke liye special fix */
+@media (max-width: 360px) {
+    .logo-text {
+        font-size: 14px; /* Aur thoda chhota taake screen se bahar na jaye */
+    }
+}
